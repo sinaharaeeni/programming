@@ -1,6 +1,6 @@
 #!/bin/bash
 # Last modify 2024/05/05
-# Version 2.0
+# Version 2.1
 # With this script can create script file
 
 # Define color codes
@@ -29,6 +29,10 @@ echo "# Last modify: 0/0/0" >> $ScriptName.sh
 echo "# Description: " >> $ScriptName.sh
 echo "# Version: $Version " >> $ScriptName.sh
 
+# Change execute permision for created file
+chmod +x $ScriptName.sh
+
+# Verify created file
 if ls $ScriptName.sh ; then
     echo -e "${GREEN}Script $ScriptName.sh created successfully. ${RESET}"
     exit 0
