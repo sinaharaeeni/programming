@@ -1,5 +1,7 @@
 #!/bin/bash
-# with this script can create script
+# Last modify 2024/05/05
+# Version 2.0
+# With this script can create script file
 
 # Define color codes
 RED='\033[0;31m'
@@ -14,12 +16,18 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-# Define script name from input
+# Define enviorment
 ScriptName="$1"
+CreateDate="`date +%Y`/`date +%m`/`date +%d`";
+Version="1.0"
 
 # Create file and put template
 touch $ScriptName.sh
 echo "#!/bin/bash" > $ScriptName.sh
+echo "# Created on: $CreateDate" >> $ScriptName.sh
+echo "# Last modify: 0/0/0" >> $ScriptName.sh
+echo "# Description: " >> $ScriptName.sh
+echo "# Version: $Version " >> $ScriptName.sh
 
 if ls $ScriptName.sh ; then
     echo -e "${GREEN}Script $ScriptName.sh created successfully. ${RESET}"
