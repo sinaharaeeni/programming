@@ -27,7 +27,7 @@ echo "#!/bin/bash" > $ScriptName.sh
 echo "# Created on: $CreateDate" >> $ScriptName.sh
 echo "# Last modify: 0/0/0" >> $ScriptName.sh
 echo "# Description: " >> $ScriptName.sh
-echo "# Version: $Version " >> $ScriptName.sh
+echo "# Version: $Version" >> $ScriptName.sh
 
 # Change execute permision for created file
 chmod +x $ScriptName.sh
