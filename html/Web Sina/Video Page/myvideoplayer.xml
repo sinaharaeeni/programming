@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+
+<coffeecupvideoplayer version="5.3">
+
+  <videobox
+   x="0"
+   y="0"
+   w="375"
+   h="373"
+   playonstartup="f"
+   loop="t"
+   shuffle="f"
+   dir="myvideoplayer_files/"
+   showplayonstartup="t"
+disableclicktoactiveprompt="false"
+   skinname="Green Machine Skin"
+   skinsize="l"
+   bkdobk="f"
+   bkdogradient="f"
+   bkfillclr="0x000000"
+   bkfillalpha="100"
+   bkgradclr="0xFFFFFF"
+   bkgradalpha="100"
+   bkgradangle="70"
+   bkdoimg="t"
+   bkimg="myvideoplayer_files/bd.jpg"
+   bkdobdr="f"
+   bkbdrsolid="t"
+   bkbdrcolor="0x808080"
+   bkdomask="t"
+  >
+
+  <rewindbutton
+   x="38"
+   y="329"
+   w="39"
+   h="30"
+   toggle="f"
+   btnupimg="myvideoplayer_files/rr.jpg"
+   action="rr"
+   visible="t"
+  ></rewindbutton>
+
+  <ffbutton
+   x="208"
+   y="330"
+   w="36"
+   h="27"
+   toggle="f"
+   btnupimg="myvideoplayer_files/ff.jpg"
+   action="ff"
+   visible="t"
+  ></ffbutton>
+
+  <playbutton
+   x="123"
+   y="329"
+   w="41"
+   h="30"
+   toggle="t"
+   btnupimg="myvideoplayer_files/play.jpg"
+   btndownimg="myvideoplayer_files/play.jpg"
+   action="playpause"
+   visible="t"
+  ></playbutton>
+
+  <shufbutton
+   x="111"
+   y="68"
+   w="35"
+   h="14"
+   toggle="t"
+   action="shuf"
+   visible="f"
+  ></shufbutton>
+
+  <loopbutton
+   x="100"
+   y="0"
+   w="20"
+   h="20"
+   toggle="t"
+   action="loop"
+   visible="f"
+  ></loopbutton>
+
+  <volume
+   x="272"
+   y="293"
+   w="88"
+   h="12"
+   visible="t"
+  ></volume>
+
+  <progress
+   x="17"
+   y="296"
+   w="217"
+   visible="t"
+  ></progress>
+
+  <tree
+   x="17"
+   y="68"
+   w="264"
+   h="62"
+   visible="f"
+  >
+  <node label="">
+    <node name="" file="myvideoplayer_files/Amir_Khalvat_Ft._Maed_-_Sade_Rafti_(HQ)_[Www.Bir3Da.Net].flv" artist="Amir Khalvat Ft. Maed - Sade Rafti (HQ) [Www.Bir3Da.Net]" label="Amir Khalvat Ft. Maed - Sade Rafti (HQ) [Www.Bir3Da.Net]"/>
+    <node name="" file="myvideoplayer_files/Amir_Tataloo_-_Alo_2.flv" artist="Amir Tataloo - Alo 2" label="Amir Tataloo - Alo 2"/>
+    <node name="" file="myvideoplayer_files/Ashkin0098_Ft._Saeed_Shayan_-_Bemiram_(HQ)_[Www.Bir3Da.Net].flv" artist="Ashkin0098 Ft. Saeed Shayan - Bemiram (HQ) [Www.Bir3Da.Net]" label="Ashkin0098 Ft. Saeed Shayan - Bemiram (HQ) [Www.Bir3Da.Net]"/>
+    <node name="" file="myvideoplayer_files/Booo_Sarde_.flv" artist="Booo Sarde " label="Booo Sarde "/>
+    <node name="" file="myvideoplayer_files/Chizi_Shode.flv" artist="Chizi Shode" label="Chizi Shode"/>
+    <node name="" file="myvideoplayer_files/Ebiraam___Amir_Azimi_-_Chera.flv" artist="Ebiraam &amp; Amir Azimi - Chera" label="Ebiraam &amp; Amir Azimi - Chera"/>
+    <node name="" file="myvideoplayer_files/Khoobe.flv" artist="Khoobe" label="Khoobe"/>
+    <node name="" file="myvideoplayer_files/Rooh.flv" artist="Rooh" label="Rooh"/>
+    <node name="" file="myvideoplayer_files/Yas_-_Az_Chi_Begam(2).FLV" artist="Yas - Az Chi Begam" label="Yas - Az Chi Begam"/>
+  </node>
+
+  </tree>
+
+  <label
+   x="615"
+   y="312"
+   w="53"
+   h="15"
+   bkdobk="f"
+   bkdogradient="f"
+   bkdoimg="f"
+   fntalpha="100"
+   fntsize="10"
+   fntclr="0xFFFFFF"
+   fntbold="f"
+   fntitalic="f"
+   fnt="Arial"
+   visible="t"
+  ></label>
+
+  <scrolllabel
+   x="611"
+   y="375"
+   w="273"
+   h="16"
+   bkdobk="f"
+   bkdogradient="f"
+   bkdoimg="f"
+   fntalpha="100"
+   fntsize="10"
+   fntclr="0x000000"
+   fntbold="f"
+   fntitalic="f"
+   fnt="Arial"
+   visible="t"
+  ></scrolllabel>
+
+  <treebutton
+   x="278"
+   y="327"
+   w="78"
+   h="35"
+   toggle="t"
+   btnupimg="myvideoplayer_files/pl.jpg"
+   btndownimg="myvideoplayer_files/pl.jpg"
+   action="tree"
+   visible="t"
+  ></treebutton>
+
+  <video
+   x="11"
+   y="15"
+   h="260"
+   w="352"
+   visible="t"
+  ></video>
+
+  </videobox>
+
+</coffeecupvideoplayer>

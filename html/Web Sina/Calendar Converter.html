@@ -1,0 +1,43 @@
+﻿<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="ico.ico" type="image/x-icon">
+<title> Sina Web/Calendar Converter </title>
+<script language="JavaScript" type="text/javascript">
+var message="تبديل تاريخهاي ميلادي, هجري شمسي و قمري به يكديگر";
+function click(e) 
+{
+if (document.all) {
+if (event.button==2||event.button==3) {
+alert(message);
+return false;
+}
+}
+if (document.layers) {
+if (e.which == 3)
+{
+alert(message);
+return false;
+}
+}
+}
+if (document.layers) {
+document.captureEvents(Event.MOUSEDOWN);
+}
+document.onmousedown=click;
+ </script>
+</head>
+<body bgproperties="fixed" background="SABA.jpg" leftmargin="10%" topmargin="3" rightmargin="10%"
+ alink="Fuchsia" link="yellow" vlink="Lime">
+ <embed
+src="HMG.mp3" stretchtofit="true" width="1" height="1" BGCOLOR="#FF3399" loop="true" autostart="true" enablecontextmenu="false" showcontrols="true">
+</embed >
+<p align="center">
+<iframe name="I1" src="./Calendar Converter/date.htm" border="0" frameborder="0" height="435" scrolling="no" width="670">
+Your browser
+does not support inline frames or is currently configured not to
+display inline frames.
+</iframe></p>
+ <p align="center"><font face="Times New Roman" size="6" color="Red"> By Sina Haraeeni</font></p>
+<br><br><center><a href=".\sina web.html"><h1>   Go Back To Sina Web Page  </h1></A></center>
+<br>
+</body></html>
