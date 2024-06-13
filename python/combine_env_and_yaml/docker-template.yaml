@@ -14,6 +14,9 @@ services:
     - --providers.docker.exposedbydefault=true
     - --entrypoints.web.address=:80
     - --entrypoints.websecure.address=:443
+    - "--accesslog=true"
+    - "--accesslog.filepath=/log/access.log"
+    - "--accesslog.format=json"
     ports:
     - 80:80
     - 443:443
