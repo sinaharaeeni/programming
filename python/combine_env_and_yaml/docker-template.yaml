@@ -1,0 +1,39 @@
+# Build for create enviorment
+# Last modify 2024/06/13
+# Version 1.0
+
+version: '3.3'
+
+services:
+  traefik:
+    image: ${traefik_image}
+    command:
+    - --log.level=DEBUG
+    - --api.insecure=true
+    - --providers.docker=true
+    - --providers.docker.exposedbydefault=true
+    - --entrypoints.web.address=:80
+    - --entrypoints.websecure.address=:443
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+      - traefik.http.routers.traefik.rule=Host(`traefik.sinaharaeeni.ir`)
+
+  nginx:
+    image: ${nginx_image}
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.nginx.loadbalancer.server.port=80
+      - traefik.http.routers.nginx.rule=PathPrefix(`/`)
+
+  whoami:
+    image: ${whoami_image}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.whoami.rule=Host(`whoami.sinaharaeeni.ir`)
+      - traefik.http.services.whoami.loadbalancer.server.port=80
