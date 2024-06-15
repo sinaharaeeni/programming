@@ -1,6 +1,6 @@
 # Build for create enviorment
-# Last modify 2024/06/13
-# Version 1.0
+# Last modify 2024/06/15
+# Version 1.1
 
 version: '3.3'
 
@@ -25,7 +25,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.traefik.loadbalancer.server.port=8080
-      - traefik.http.routers.traefik.rule=Host(`traefik.sinaharaeeni.ir`)
+      - traefik.http.routers.traefik.rule=Host(`traefik.${domain}`)
 
   nginx:
     image: ${nginx_image}
@@ -38,5 +38,5 @@ services:
     image: ${whoami_image}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.whoami.rule=Host(`whoami.sinaharaeeni.ir`)
+      - traefik.http.routers.whoami.rule=Host(`whoami.${domain}`)
       - traefik.http.services.whoami.loadbalancer.server.port=80
