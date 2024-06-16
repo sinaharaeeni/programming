@@ -3,13 +3,13 @@ import re
 from dotenv import dotenv_values
 
 # Load environment variables from images.env
-env_vars = dotenv_values('images.env')
+env_vars = dotenv_values('environment.env')
 
-# Read the docker-compose.yaml file
+# Read the docker-template.yaml file
 with open('docker-template.yaml', 'r') as yaml_file:
     yaml_content = yaml_file.read()
 
-# Substitute environment variables in the docker-compose content
+# Substitute environment variables in the docker-template content
 for key, value in env_vars.items():
     placeholder = f"${{{key}}}"
     yaml_content = yaml_content.replace(placeholder, value)
