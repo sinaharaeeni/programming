@@ -1,5 +1,5 @@
 #!/bin/bash
-# For combine file environment with yaml template to any file
+# For combine file environment with yaml template to one file
 # Last modify 2024/06/16
 Version=1.0
 
