@@ -1,6 +1,6 @@
 # Build for combine file environment with yaml template to one file
-# Last modify 2024/06/16
-# Version 1.3
+# Last modify 2024/06/18
+# Version 1.4
 
 version: '3.3'
 
@@ -13,30 +13,28 @@ services:
     - --providers.docker=true
     - --providers.docker.exposedbydefault=true
     - --entrypoints.web.address=:${port_web}
-    - --entrypoints.websecure.address=:${port_secure_web}
     - "--accesslog=true"
     - "--accesslog.filepath=/log/access.log"
     - "--accesslog.format=json"
     ports:
     - ${port_web}:${port_web}
-    - ${port_secure_web}:${port_secure_web}
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
-      - traefik.enable=true
-      - traefik.http.services.traefik.loadbalancer.server.port=8080
-      - traefik.http.routers.traefik.rule=Host(`traefik.${domain}`)
+    - traefik.enable=true
+    - traefik.http.services.traefik.loadbalancer.server.port=8080
+    - traefik.http.routers.traefik.rule=Host(`traefik.${domain}`)
 
   nginx:
     image: ${nginx_image}
     labels:
-      - traefik.enable=true
-      - traefik.http.services.nginx.loadbalancer.server.port=80
-      - traefik.http.routers.nginx.rule=PathPrefix(`/`)
+    - traefik.enable=true
+    - traefik.http.services.nginx.loadbalancer.server.port=80
+    - traefik.http.routers.nginx.rule=PathPrefix(`/`)
 
   whoami:
     image: ${whoami_image}
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.whoami.rule=Host(`whoami.${domain}`)
-      - traefik.http.services.whoami.loadbalancer.server.port=80
+    - traefik.enable=true
+    - traefik.http.routers.whoami.rule=Host(`whoami.${domain}`)
+    - traefik.http.services.whoami.loadbalancer.server.port=80
