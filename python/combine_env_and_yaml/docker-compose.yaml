@@ -1,6 +1,6 @@
 # Build for combine file environment with yaml template to one file
 # Last modify 2024/06/18
-# Version 1.4
+# Version 1.5
 
 version: '3.3'
 
@@ -13,9 +13,6 @@ services:
     - --providers.docker=true
     - --providers.docker.exposedbydefault=true
     - --entrypoints.web.address=:80
-    - "--accesslog=true"
-    - "--accesslog.filepath=/log/access.log"
-    - "--accesslog.format=json"
     ports:
     - 80:80
     volumes:
@@ -36,5 +33,5 @@ services:
     image: docker.io/traefik/whoami:v1.10.2
     labels:
     - traefik.enable=true
-    - traefik.http.routers.whoami.rule=Host(`whoami.sinaharaeeni.ir`)
     - traefik.http.services.whoami.loadbalancer.server.port=80
+    - traefik.http.routers.whoami.rule=Host(`whoami.sinaharaeeni.ir`)
