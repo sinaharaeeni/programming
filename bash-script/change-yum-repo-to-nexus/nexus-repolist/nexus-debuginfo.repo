@@ -1,0 +1,7 @@
+[nexus-debuginfo]
+name=VMware Photon Linux debuginfo $releasever ($basearch)
+baseurl=http://repo.sinacomsys.local:9099/repository/yum-photon/$releasever/photon_debuginfo_$releasever_$basearch
+gpgkey=file:///etc/pki/rpm-gpg/VMWARE-RPM-GPG-KEY file:///etc/pki/rpm-gpg/VMWARE-RPM-GPG-KEY-4096
+gpgcheck=1
+enabled=0
+skip_if_unavailable=1
