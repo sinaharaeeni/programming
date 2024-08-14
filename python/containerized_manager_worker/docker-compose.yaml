@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  manager:
+    build: ./manager
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./manager:/app
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - MONGO_USERNAME=root
+      - MONGO_PASSWORD=example
+      - MONGO_ADDRESS=mongo:27017
+      - MONGO_DB=task_db
+    depends_on:
+      - mongo
+      - redis
+
+  worker:
+    build: ./worker
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - MONGO_USERNAME=root
+      - MONGO_PASSWORD=example
+      - MONGO_ADDRESS=mongo:27017
+      - MONGO_DB=task_db
+    depends_on:
+      - mongo
+      - redis
+    deploy:
+      mode: replicated
+      replicas: 4
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+
+  mongo:
+    image: mongo:4.4-bionic
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: task_db
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    # Optionally: Initialize with a script
+    # volumes:
+    #   - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+volumes:
+  mongo_data:

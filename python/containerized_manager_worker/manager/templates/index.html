@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager UI</title>
+</head>
+<body>
+    <h1>Manager Interface</h1>
+
+    <hr>
+
+    <!-- Display worker status -->
+    <h2>Worker Status</h2>
+    <p>Total Workers: {{ worker_count }}</p>
+    <ul>
+        {% if worker_status %}
+            <ul>
+            {% for worker, status in worker_status.items() %}
+                <li><strong>{{ worker }}</strong>: {{ status['ok'] }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No workers available.</p>
+        {% endif %}
+    </ul>
+
+    <hr>
+
+    <!-- Command submission form -->
+    <h2>Submit a Command</h2>
+    <form id="commandForm">
+        <input type="text" id="command" name="command" placeholder="Enter command">
+        <button type="submit">Send</button>
+    </form>
+    <div id="result"></div>
+
+    <hr>
+
+    <!-- Check task status form -->
+    <h2>Check Task Status</h2>
+    <form id="statusForm">
+        <input type="text" id="task_id" name="task_id" placeholder="Enter task ID">
+        <button type="submit">Check Status</button>
+    </form>
+    <div id="statusResult"></div>
+
+    <hr>
+
+    <!-- List tasks -->
+    <h2>Tasks</h2>
+    <button id="listTasksButton">List All Tasks</button>
+    <div id="tasksList"></div>
+
+    <hr>
+
+    <!-- List all tasks -->
+    <h2>All Tasks</h2>
+    <a href="{{ url_for('list_all_tasks') }}">View All Tasks</a>
+
+    <script>
+        document.getElementById('commandForm').onsubmit = async (event) => {
+            event.preventDefault();
+            const command = document.getElementById('command').value;
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({command})
+            });
+            const result = await response.json();
+            document.getElementById('result').innerText = 'Task ID: ' + result.task_id + ' Status: ' + result.status;
+        }
+
+        document.getElementById('statusForm').onsubmit = async (event) => {
+            event.preventDefault();
+            const task_id = document.getElementById('task_id').value;
+            const response = await fetch('/status/' + task_id);
+            const result = await response.json();
+            document.getElementById('statusResult').innerText = 'Task ID: ' + result.task_id + ' Status: ' + result.status + ' Result: ' + (result.result || 'N/A') + ' Error: ' + (result.error || 'None');
+        }
+
+        document.getElementById('listTasksButton').onclick = async () => {
+            const response = await fetch('/tasks');
+            const tasks = await response.json();
+            const tasksListDiv = document.getElementById('tasksList');
+            tasksListDiv.innerHTML = '<ul>' + tasks.map(task => 
+                `<li>Task ID: ${task.task_id}, Command: ${task.command}, Status: ${task.status}, Result: ${task.result || 'N/A'}, Error: ${task.error || 'None'}</li>`
+            ).join('') + '</ul>';
+        }
+    </script>
+</body>
+</html>

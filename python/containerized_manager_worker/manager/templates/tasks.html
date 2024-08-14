@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Task ID</th>
+                <th>Command</th>
+                <th>Worker ID</th>
+                <th>Status</th>
+                <th>Result</th>
+                <th>Error</th>
+                <th>Submitted At</th>
+                <th>Start At</th>
+                <th>Completed At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.task_id }}</td>
+                <td>{{ task.command }}</td>
+                <td>{{ task.worker_id }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.result or 'N/A' }}</td>
+                <td>{{ task.error or 'N/A' }}</td>
+                <td>{{ task.submitted_at.strftime('%Y-%m-%d %H:%M:%S') if task.submitted_at else 'N/A' }}</td>
+                <td>{{ task.started_at.strftime('%Y-%m-%d %H:%M:%S') if task.started_at else 'N/A' }}</td>
+                <td>{{ task.completed_at.strftime('%Y-%m-%d %H:%M:%S') if task.completed_at else 'N/A' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
